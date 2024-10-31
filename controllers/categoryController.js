@@ -6,6 +6,18 @@ async function categoriesGet(req, res) {
    res.send("Categories: " + categories.map(category => category.category_name).join(", "));
 }
 
+async function categoriesCreateGet(req, res) {
+    res.render('categoryForm');
+}
+
+async function categoriesCreatePost(req, res){
+    const {category_name} = req.body;
+    await db.insertCategory(category_name);
+    res.redirect('/categories');
+}
+
 module.exports = {
-    categoriesGet
+    categoriesGet,
+    categoriesCreateGet,
+    categoriesCreatePost
 }
