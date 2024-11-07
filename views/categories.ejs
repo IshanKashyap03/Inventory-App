@@ -9,7 +9,10 @@
     <%- include('navbar', {links: links}) %>
     <ul>
         <% categories.map((category) => { %>
-            <li><%= category.category_name %></li>
+            <li>
+                <%= category.category_name %>
+                <a href="/categories/update/<%= category.id %>"><button>Update</button></a>
+            </li>
           <% }) %>
     </ul>
     <a href="/categories/new"><button>Add a new category</button></a>

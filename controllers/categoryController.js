@@ -19,8 +19,22 @@ async function categoriesCreatePost(req, res){
     res.redirect('/categories');
 }
 
+async function categoriesUpdateGet(req, res) {
+    const categoryId = req.params.id;
+    res.render('categoryUpdateForm', {categoryId: categoryId});
+}
+
+async function categoriesUpdatePost(req, res){
+    const categoryId = req.params.id;
+    const {updated_category_name} = req.body;
+    await db.updateCategory(updated_category_name, categoryId);
+    res.redirect('/categories');
+}
+
 module.exports = {
     categoriesGet,
     categoriesCreateGet,
-    categoriesCreatePost
+    categoriesCreatePost,
+    categoriesUpdateGet,
+    categoriesUpdatePost
 }
