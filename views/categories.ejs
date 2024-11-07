@@ -10,7 +10,7 @@
     <ul>
         <% categories.map((category) => { %>
             <li>
-                <%= category.category_name %>
+                Name: <%= category.category_name %>
                 <a href="/categories/update/<%= category.id %>"><button>Update</button></a>
                 <form action="/categories/<%= category.id %>?_method=DELETE" method="POST" style="display: inline;">
                     <button type="submit">Delete</button>
