@@ -23,7 +23,7 @@ const SQL2 =
 CREATE TABLE IF NOT EXISTS items (
   id SERIAL PRIMARY KEY,
   item_name VARCHAR(100) UNIQUE NOT NULL,
-  category_id INTEGER REFERENCES categories(id) NOT NULL,
+  category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE NOT NULL,
   quantity INTEGER DEFAULT 0,
   price NUMERIC(10, 2) NOT NULL,
   created_at TIMESTAMP DEFAULT NOW(),

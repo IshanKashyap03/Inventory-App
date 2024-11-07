@@ -31,10 +31,17 @@ async function categoriesUpdatePost(req, res){
     res.redirect('/categories');
 }
 
+async function categoriesDelete(req, res) {
+    const categoryId = req.params.id;
+    await db.deleteCategory(categoryId);
+    res.redirect('/categories');
+}
+
 module.exports = {
     categoriesGet,
     categoriesCreateGet,
     categoriesCreatePost,
     categoriesUpdateGet,
-    categoriesUpdatePost
+    categoriesUpdatePost,
+    categoriesDelete
 }

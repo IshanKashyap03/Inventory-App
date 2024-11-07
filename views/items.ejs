@@ -9,7 +9,13 @@
     <%- include('navbar', {links: links}) %>
     <ul>
         <% items.map((item) => { %>
-            <li><%= item.item_name %></li>
+            <li>
+                <%= item.item_name %>
+                <a href="/items/update/<%= item.id %>"><button>Update</button></a>
+                <form action="/items/<%= item.id %>?_method=DELETE" method="POST" style="display: inline;">
+                    <button type="submit">Delete</button>
+                </form>   
+            </li>
           <% }) %>
     </ul>
     <a href="/items/new"><button>Add a new item</button></a>

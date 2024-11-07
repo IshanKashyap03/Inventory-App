@@ -21,8 +21,30 @@ async function itemsCreatePost(req, res) {
     res.redirect('/items');
 }
 
+async function itemsUpdateGet(req, res) {
+    const itemId = req.params.id;
+    res.render('itemUpdateForm', {itemId: itemId});
+}
+
+async function itemsUpdatePost(req, res){
+    const itemId = req.params.id;
+    const {updated_item_name, updated_quantity, updated_price} = req.body;
+    await db.updateItem(updated_item_name, updated_quantity, updated_price,itemId);
+    res.redirect('/items');
+}
+
+async function itemsDelete(req, res) {
+    const itemId = req.params.id;
+    await db.deleteItem(itemId);
+    res.redirect('/items');
+}
+
+
 module.exports = {
     itemsGet,
     itemsCreateGet,
-    itemsCreatePost
+    itemsCreatePost,
+    itemsUpdateGet,
+    itemsUpdatePost,
+    itemsDelete
 }

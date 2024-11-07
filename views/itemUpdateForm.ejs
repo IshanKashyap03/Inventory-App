@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory App</title>
+</head>
+<body>
+    <form action="/items/update/<%= itemId %>" method="POST">
+        <label for="updated_item_name">Update The Item Name:</label>
+        <input type="text" id="updated_item_name" name="updated_item_name" required>
+
+        <label for="updated_quantity">Update The Quantity:</label>
+        <input type="text" id="updated_quantity" name="updated_quantity" required>
+
+        <label for="updated_price">Update The Price:</label>
+        <input type="text" id="updated_price" name="updated_price" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

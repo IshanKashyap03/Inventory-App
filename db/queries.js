@@ -23,8 +23,20 @@ async function updateCategory(updatedCategoryName, categoryId){
     await pool.query("Update categories SET category_name = ($1) WHERE id = ($2)", [updatedCategoryName, categoryId]);
 }
 
+async function updateItem(updatedItemName, updatedQuantity, updatedPrice, itemId){
+    await pool.query("Update items SET item_name = ($1), quantity = ($2), price = ($3) WHERE id = ($4)", [updatedItemName, updatedQuantity, updatedPrice,itemId]);
+}
+
 async function insertItem(itemName, category_id, quantity, price){
     await pool.query("INSERT INTO items (item_name, category_id, quantity, price) VALUES ($1, $2, $3, $4)", [itemName, category_id, quantity, price]);
+}
+
+async function deleteCategory(categoryId){
+    await pool.query("DELETE FROM categories WHERE id = ($1)", [categoryId])
+}
+
+async function deleteItem(itemId){
+    await pool.query("DELETE FROM items WHERE id = ($1)", [itemId])
 }
 
 module.exports = {
@@ -33,5 +45,8 @@ module.exports = {
     getCategoryId,
     insertCategory,
     insertItem,
-    updateCategory
+    updateCategory,
+    updateItem,
+    deleteCategory,
+    deleteItem
 }
