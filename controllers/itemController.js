@@ -1,9 +1,13 @@
 const db = require("../db/queries");
+const links = [
+    { href: "/", text: "Home" },
+  ];
+
 
 async function itemsGet(req, res) {
     const items = await db.getAllItems();
     console.log(items);
-    res.send("Items: " + items.map(item => item.item_name).join(", "));
+    res.render('items', {items: items, links: links});
 }
 
 async function itemsCreateGet(req, res) {

@@ -1,9 +1,12 @@
 const db = require("../db/queries");
+const links = [
+    { href: "/", text: "Home" },
+  ];
 
 async function categoriesGet(req, res) {
    const categories = await db.getAllCategories();
    console.log(categories);
-   res.send("Categories: " + categories.map(category => category.category_name).join(", "));
+   res.render('categories', {categories: categories, links: links});
 }
 
 async function categoriesCreateGet(req, res) {

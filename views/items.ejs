@@ -7,7 +7,11 @@
 </head>
 <body>
     <%- include('navbar', {links: links}) %>
-    <a href="/categories"><button>View Categories</button></a>
-    <a href="/items"><button>View Items</button></a>
+    <ul>
+        <% items.map((item) => { %>
+            <li><%= item.item_name %></li>
+          <% }) %>
+    </ul>
+    <a href="/items/new"><button>Add a new item</button></a>
 </body>
 </html>

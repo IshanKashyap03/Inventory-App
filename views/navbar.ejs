@@ -6,8 +6,14 @@
     <title>Inventory App</title>
 </head>
 <body>
-    <%- include('navbar', {links: links}) %>
-    <a href="/categories"><button>View Categories</button></a>
-    <a href="/items"><button>View Items</button></a>
+<nav>
+    <ul>
+      <% for (let i = 0; i < links.length; i++) { %>
+        <a href="<%= links[i].href %>">
+            <span> <%= links[i].text %> </span>
+          </a>
+      <% } %>
+    </ul>
+  </nav>
 </body>
 </html>
